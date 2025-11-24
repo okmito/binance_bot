@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trading Dashboard — Demo</title>
+
+  <!-- Socket.IO (keep CDN) -->
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+  <!-- Simple Chart (we'll draw a tiny sparkline using canvas) -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="/static/reference_image.png" alt="logo">
+      <div class="title-area">
+        <h1>Trading Dashboard</h1>
+        <p class="subtitle">Testnet • Minimal Light Theme</p>
+      </div>
+    </div>
+    <nav>
+      <button id="connectBtn" class="btn small">Connect</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <div class="card price-card">
+        <div class="card-head">
+          <div>
+            <h2 id="symbolHeadline">BTCUSDT</h2>
+            <p class="muted">Mark Price</p>
+          </div>
+          <div class="price-box">
+            <div id="priceValue" class="price">—</div>
+            <div id="priceChange" class="muted small">—</div>
+          </div>
+        </div>
+
+        <div class="price-body">
+          <canvas id="sparkline" width="300" height="60"></canvas>
+        </div>
+
+        <div class="card-foot muted small">
+          <span id="lastUpdate">No data yet</span>
+        </div>
+      </div>
+
+      <div class="card order-card">
+        <h3>Place Order (dry-run)</h3>
+        <form id="orderForm" class="order-form">
+          <div class="row">
+            <label>Symbol
+              <input id="symbol" type="text" value="BTCUSDT" />
+            </label>
+            <label>Side
+              <select id="side">
+                <option>BUY</option>
+                <option>SELL</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <label>Type
+              <select id="type">
+                <option value="MARKET">MARKET</option>
+                <option value="LIMIT">LIMIT</option>
+                <option value="STOP_LIMIT">STOP_LIMIT</option>
+                <option value="OCO">OCO</option>
+              </select>
+            </label>
+
+            <label>Quantity
+              <input id="quantity" type="number" step="0.0001" value="0.001" />
+            </label>
+          </div>
+
+          <div class="row" id="priceRow" style="display:none;">
+            <label>Price
+              <input id="price" type="number" step="0.01" />
+            </label>
+            <label>Stop Price
+              <input id="stopPrice" type="number" step="0.01" />
+            </label>
+          </div>
+
+          <div class="row actions">
+            <button type="submit" class="btn primary">Place Order</button>
+            <button id="dryRunBtn" class="btn outline" type="button">Dry-run</button>
+          </div>
+
+          <pre id="orderResult" class="result">Results will appear here</pre>
+        </form>
+      </div>
+
+      <div class="card quick-card">
+        <h4>Quick Actions</h4>
+        <div class="quick-grid">
+          <button class="btn small" onclick="fillExample('0.002')">Buy 0.002 Market</button>
+          <button class="btn small outline" onclick="fillExample('0.001')">Sell 0.001 Market</button>
+          <button class="btn small" onclick="subscribeSymbol()">Subscribe</button>
+        </div>
+        <div style="margin-top:12px" class="muted small">
+          Tip: use <code>Dry-run</code> before sending live orders.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer muted small">
+    Built for Binance Futures Testnet • Use testnet keys only
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
