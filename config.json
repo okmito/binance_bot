@@ -1,6 +1,6 @@
 {
-  "api_key": "1iDHsUuWpBndBf2iHHubKWt8BmU8f10lWvaO4LHIMczwVaXXr4Ph5vwmOIFZku5A",
-  "api_secret": "6t8wW8C1HPSOVh5WDWDcw1PB8HnK5kcjX27kS8hvbuLkKhgGynVF7kUXqZyj7hsu",
+  "api_key": "BINANCE_API_KEY",
+  "api_secret": "BINANCE_API_SECRET",
   "base_url": "https://testnet.binancefuture.com",
   "recv_window": 5000,
   "log_file": "bot.log"
