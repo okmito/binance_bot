@@ -1,8 +1,5 @@
-Simplified Binance Futures Trading Suite (FINAL)
+Simplified Binance Futures Trading Suite
 ===============================================
-
-Folder: simplified_binance_bot_full
-Reference image you uploaded: /mnt/data/1e550dc7-67a3-4494-916b-eef3415d5e6c.png
 
 What's included:
 - bot.py, cli.py, repl.py (from earlier)
